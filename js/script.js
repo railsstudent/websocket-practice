@@ -48,25 +48,26 @@ $(document).ready(() => {
           $availableInfo.css('animation-duration', '5s');
 
           if (data.status.toLowerCase() === 'available') {
-            $licensePlate.html('')
-                .removeClass('add-border');
+            $licensePlate.parent().css('display', 'none');
+            $licensePlate.removeClass('add-border')
 
             $status.addClass('available')
               .removeClass('unavailable');
-            $availableInfo.css('background', '#28A528');
+            $availableInfo.css('background', '#7dc05e');
             $availHoursText.css('display', 'table')
               .css('color', '#fff')
               .html(data.time);
             $unavailSlotParent.css('display', 'none');
             $availSlotParent.css('display', 'block');
-            $availSlot.html(data && data.slot && 'No ' + data.slot || '');
+            $availSlot.html(data && data.slot && 'NO.' + data.slot || '');
           } else if (data.status.toLowerCase() === 'unavailable') {
+            $licensePlate.parent().css('display', 'block');
             $licensePlate.html(data && data.plate || '')
                         .addClass('add-border');
             $status.addClass('unavailable')
                     .removeClass('available');
             $availHoursText.css('display', 'none');
-            $availableInfo.css('background', '#ff0000');
+            $availableInfo.css('background', '#ea5c2d');
             $availSlotParent.css('display', 'none');
             $unavailSlotParent.css('display', 'block');
             $unavailSlot.html(data && data.slot && 'No ' + data.slot || '')
