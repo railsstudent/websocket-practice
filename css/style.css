@@ -9,29 +9,41 @@ body {
   padding: 0;
   background: #464646;
   overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .parking-space {
-  margin-bottom: 30px;
+  height: 80%;
+  flex-basis: 100%;
 
+  /* flex container for info */
   display: flex;
   align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
-.license-plate {
+/*.license-plate {
   width: 100%;
   padding-top: 10px;
   padding-left: 30px;
-}
+}*/
 
 .license-plate p {
-  font-size: 3vh;
+  font-size: 8vh;
   color: #fff;
 }
 
-.parking-slot p {
+.add-border {
+  border: 1px solid #fff;
+  padding: 10px 40px;
+}
+
+.parking-slot-available p, .parking-slot-unavailable p  {
   font-size: 10vh;
   font-weight: bold;
   color: #fff;
@@ -41,6 +53,8 @@ body {
 .available-info {
   width: 90%;
   color: #4a4a4a;
+  padding-top: 50px;
+  padding-bottom: 50px;
 
   display: flex;
   flex-flow: column wrap;
@@ -154,7 +168,7 @@ body {
     }
 
     .available-info .status.unavailable p {
-      font-size: 20vh;
+      font-size: 17vh;
     }
 }
 

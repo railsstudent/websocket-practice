@@ -2,11 +2,15 @@ $(document).ready(() => {
   // get some data from server
 
   var $licensePlate = $('.license-plate p');
-  var $slot = $('.parking-slot p');
+  var $availSlotParent = $('.parking-slot-available');
+  var $availSlot = $availSlotParent.find('p');
+  var $unavailSlotParent = $('.parking-slot-unavailable');
+  var $unavailSlot = $unavailSlotParent.find('p');
   var $availableInfo = $('.available-info');
   var $status = $availableInfo.find('.status');
   var $statusText = $availableInfo.find('.status p');
-  var $availHours = $availableInfo.find('.available-hour p');
+  var $availHoursText = $availableInfo.find('.available-hour p');
+
   var $p = $('p');
 
   // if user is running mozilla then use it's built-in WebSocket
@@ -40,21 +44,33 @@ $(document).ready(() => {
       if (data) {
           $p.css('animation-name', 'fadein');
           $p.css('animation-duration', '5s');
-          $status.css('animation-name', 'fadein');
-          $status.css('animation-duration', '5s');
+          $availableInfo.css('animation-name', 'fadein');
+          $availableInfo.css('animation-duration', '5s');
 
-          $licensePlate.html(data && data.plate || '');
-          $slot.html(data && data.slot && `No. ${data.slot}`  || '');
-          if (data.status === 'Available') {
-            $availHours.html(data.time);
-            $status.addClass('available');
-            $status.removeClass('unavailable');
-            $availHours.css('display', 'table');
-            $availHours.css('background', '#fff');
-          } else if (data.status === 'Unavailable') {
-            $status.addClass('unavailable');
-            $status.removeClass('available');
-            $availHours.css('display', 'none');
+          if (data.status.toLowerCase() === 'available') {
+            $licensePlate.html('')
+                .removeClass('add-border');
+
+            $status.addClass('available')
+              .removeClass('unavailable');
+            $availableInfo.css('background', '#28A528');
+            $availHoursText.css('display', 'table')
+              .css('color', '#fff')
+              .html(data.time);
+            $unavailSlotParent.css('display', 'none');
+            $availSlotParent.css('display', 'block');
+            $availSlot.html(data && data.slot && 'No ' + data.slot || '');
+          } else if (data.status.toLowerCase() === 'unavailable') {
+            $licensePlate.html(data && data.plate || '')
+                        .addClass('add-border');
+            $status.addClass('unavailable')
+                    .removeClass('available');
+            $availHoursText.css('display', 'none');
+            $availableInfo.css('background', '#ff0000');
+            $availSlotParent.css('display', 'none');
+            $unavailSlotParent.css('display', 'block');
+            $unavailSlot.html(data && data.slot && 'No ' + data.slot || '')
+                .css('display', 'block');
           }
           $statusText.html(data && data.status || '');
       }
@@ -72,9 +88,8 @@ $(document).ready(() => {
     $target.css('animation-duration', '');
   });
 
-  $status.on('webkitAnimationEnd oanimationend msAnimationEnd animationEnd', e => {
-    const $target = $(e.target);
-    $status.css('animation-name', '');
-    $status.css('animation-duration', '');
+  $availableInfo.on('webkitAnimationEnd oanimationend msAnimationEnd animationEnd', e => {
+    $availableInfo.css('animation-name', '');
+    $availableInfo.css('animation-duration', '');
   });
 });
