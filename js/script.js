@@ -67,14 +67,14 @@ $(document).ready(() => {
   };
 
   $p.on('webkitAnimationEnd oanimationend msAnimationEnd animationEnd', e => {
-    const $this = $(this);
-    $this.css('animation-name', '');
-    $this.css('animation-duration', '');
+    const $target = $(e.target);
+    $target.css('animation-name', '');
+    $target.css('animation-duration', '');
   });
 
   $status.on('webkitAnimationEnd oanimationend msAnimationEnd animationEnd', e => {
-    const $this = $(this);
-    $this.css('animation-name', '');
-    $this.css('animation-duration', '');
+    const $target = $(e.target);
+    $status.css('animation-name', '');
+    $status.css('animation-duration', '');
   });
 });

@@ -1,12 +1,15 @@
+body {
+  margin: 0;
+}
+
 .container {
   width: 100%;
   height: 100%;
   font-family: "Arial", "Times New Roman", "Open San";
   padding: 0;
-  background: #9e9e9e;
+  background: #464646;
   overflow: hidden;
 }
-
 
 .parking-space {
   margin-bottom: 30px;
@@ -36,7 +39,7 @@
 }
 
 .available-info {
-  width: 80%;
+  width: 90%;
   color: #4a4a4a;
 
   display: flex;
@@ -119,11 +122,13 @@
   }
 }
 
-/* tablet */
+/* tablet Portrait */
 @media only screen
   and (min-device-width: 768px)
   and (max-device-width: 1024px)
+  and (orientation: portrait)
   and (-webkit-min-device-pixel-ratio: 1) {
+
     .available-info .available-hour p {
       font-size: 8vh;
     }
@@ -133,10 +138,30 @@
     }
 }
 
+/* tablet Landscape */
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (orientation: landscape)
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+    .available-info .available-hour p {
+      font-size: 15vh;
+    }
+
+    .available-info .status.available p {
+      font-size: 15vh;
+    }
+
+    .available-info .status.unavailable p {
+      font-size: 20vh;
+    }
+}
+
 /* desktop */
 @media only screen and (min-width:320px) and (max-width:600px)  {
   .available-info .available-hour p {
-    font-size: 8vh;
+    font-size: 6vh;
   }
 
   .available-info .status.unavailable p {
