@@ -40,6 +40,7 @@ wsServer.on('request', request => {
   // This is the most important callback for us, we'll handle
   // all messages from users here.
   connection.on('message', function(message) {
+    console.log(message.utf8Data);
     if (message.type === 'utf8' && message.utf8Data) {
       // process WebSocket message
       let data = null;
@@ -55,8 +56,15 @@ wsServer.on('request', request => {
           slot: '568',
           status: 'UNAVAILABLE'
         };
+      } else if (message.utf8Data === 'mismatch') {
+        data = {
+          plate: 'DX 8834',
+          slot: '568',
+          status: 'License plate mismatches'
+        };
       }
 
+      console.log(data);
       if (data) {
         console.log((new Date()) + ' Received Message: ' + message.utf8Data);
         console.log('data', data);

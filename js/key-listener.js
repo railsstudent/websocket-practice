@@ -35,6 +35,9 @@ $(document).ready(() => {
     } else if (String.fromCharCode(e.keyCode) === 'S' && e.shiftKey === false) {
       console.log('Show unavailable parking info');
       connection.send('unavailable');
+    } else if (String.fromCharCode(e.keyCode) === 'D' && e.shiftKey === false) {
+      console.log('license plate mismatch');
+      connection.send('mismatch');
     }
   });
 

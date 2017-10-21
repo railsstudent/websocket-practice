@@ -74,7 +74,19 @@ $(document).ready(() => {
             $availableInfo.css('background', '#ea5c2d');
             $availSlotParent.css('display', 'none');
             $unavailSlotParent.css('display', 'block');
-            $unavailSlot.html(data && data.slot && 'No ' + data.slot || '')
+            $unavailSlot.html(data && data.slot && 'NO.' + data.slot || '')
+                .css('display', 'block');
+          } else if (data.status.toLowerCase() === 'license plate mismatches') {
+            $licensePlate.parent().css('display', 'block');
+            $licensePlate.html(data && data.plate || '')
+                        .addClass('add-border');
+            $status.addClass('unavailable')
+                    .removeClass('available');
+            $availHours.css('display', 'none');
+            $availableInfo.css('background', 'yellow');
+            $availSlotParent.css('display', 'none');
+            $unavailSlotParent.css('display', 'block');
+            $unavailSlot.html(data && data.slot && 'NO.' + data.slot || '')
                 .css('display', 'block');
           }
           $statusText.html(data && data.status || '');
