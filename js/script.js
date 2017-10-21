@@ -1,6 +1,8 @@
 $(document).ready(() => {
   // get some data from server
 
+  // parking-space $ http-server . -p 3001 -a 192.168.164.84
+
   var $licensePlate = $('.license-plate p');
   var $availSlotParent = $('.parking-slot-available');
   var $availSlot = $availSlotParent.find('p');
