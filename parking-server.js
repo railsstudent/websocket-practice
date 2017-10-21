@@ -34,8 +34,7 @@ wsServer.on('request', request => {
 
   const connection = request.accept(null, request.origin);
   let index = clients.push(connection) - 1;
-  let first = false;
-  console.log('index', index, 'first', first);
+  console.log('index', index);
   console.log((new Date()) + ' Connection accepted.');
 
   // This is the most important callback for us, we'll handle
@@ -49,7 +48,7 @@ wsServer.on('request', request => {
           plate: 'CP 6668',
           slot: '568',
           status: 'AVAILABLE',
-          time: '18:00 - 22:00'
+          time: '18:30 - 22:00'
         };
       } else if (message.utf8Data === 'unavailable') {
         data = {
