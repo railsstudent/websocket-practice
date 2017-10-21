@@ -11,6 +11,7 @@ $(document).ready(() => {
   var $availableInfo = $('.available-info');
   var $status = $availableInfo.find('.status');
   var $statusText = $availableInfo.find('.status p');
+  var $availHours = $availableInfo.find('.available-hour');
   var $availHoursText = $availableInfo.find('.available-hour p');
 
   var $p = $('p');
@@ -59,6 +60,7 @@ $(document).ready(() => {
             $availHoursText.css('display', 'table')
               .css('color', '#fff')
               .html(data.time);
+            $availHours.css('display', 'block');
             $unavailSlotParent.css('display', 'none');
             $availSlotParent.css('display', 'block');
             $availSlot.html(data && data.slot && 'NO.' + data.slot || '');
@@ -68,7 +70,7 @@ $(document).ready(() => {
                         .addClass('add-border');
             $status.addClass('unavailable')
                     .removeClass('available');
-            $availHoursText.css('display', 'none');
+            $availHours.css('display', 'none');
             $availableInfo.css('background', '#ea5c2d');
             $availSlotParent.css('display', 'none');
             $unavailSlotParent.css('display', 'block');
