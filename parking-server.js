@@ -48,11 +48,11 @@ wsServer.on('request', request => {
           plate: 'CP 6668',
           slot: '568',
           status: 'AVAILABLE',
-          time: '18:30 - 22:00'
+          time: '18:30 - 21:30'
         };
       } else if (message.utf8Data === 'unavailable') {
         data = {
-          plate: 'CP 6668',
+          plate: 'DX 8834',
           slot: '568',
           status: 'UNAVAILABLE'
         };
