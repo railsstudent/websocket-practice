@@ -1,0 +1,19 @@
+{
+  "name": "parking-space",
+  "version": "1.0.0",
+  "description": "Share parking space",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "smart",
+    "city",
+    "parking"
+  ],
+  "author": "Connie Leung",
+  "license": "MIT",
+  "dependencies": {
+    "websocket": "1.0.25"
+  }
+}
