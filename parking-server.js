@@ -45,7 +45,6 @@ wsServer.on('request', request => {
       let data = null;
       if (message.utf8Data === 'available') {
         data = {
-          plate: 'CP 6668',
           slot: '568',
           status: 'AVAILABLE',
           time: '18:30 - 21:30'
