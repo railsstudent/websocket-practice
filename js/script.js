@@ -38,24 +38,25 @@ $(document).ready(() => {
       const data = JSON.parse(message.data);
       console.log(data);
       if (data) {
-          $p.css('animate-name', 'fadein');
-          $p.css('animate-duration', '2s');
+          $p.css('animation-name', 'fadein');
+          $p.css('animation-duration', '5s');
+          $status.css('animation-name', 'fadein');
+          $status.css('animation-duration', '5s');
 
           $licensePlate.html(data && data.plate || '');
           $slot.html(data && data.slot && `No. ${data.slot}`  || '');
-          $statusText.html(data && data.status || '');
-
           if (data.status === 'Available') {
             $availHours.html(data.time);
             $status.addClass('available');
             $status.removeClass('unavailable');
             $availHours.css('display', 'table');
-
+            $availHours.css('background', '#fff');
           } else if (data.status === 'Unavailable') {
             $status.addClass('unavailable');
             $status.removeClass('available');
             $availHours.css('display', 'none');
           }
+          $statusText.html(data && data.status || '');
       }
     } catch (e) {
       console.log('This doesn\'t look like a valid JSON: ',
@@ -65,7 +66,15 @@ $(document).ready(() => {
     // handle incoming message
   };
 
-  $p.on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', e => {
-    console.log('animation ends');
+  $p.on('webkitAnimationEnd oanimationend msAnimationEnd animationEnd', e => {
+    const $this = $(this);
+    $this.css('animation-name', '');
+    $this.css('animation-duration', '');
+  });
+
+  $status.on('webkitAnimationEnd oanimationend msAnimationEnd animationEnd', e => {
+    const $this = $(this);
+    $this.css('animation-name', '');
+    $this.css('animation-duration', '');
   });
 });
