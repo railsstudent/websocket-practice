@@ -11,7 +11,7 @@ $(document).ready(() => {
     console.log('Websocket is supported');
   }
 
-  const connection = new WebSocket('ws://192.168.164.84:1337');
+  const connection = new WebSocket('ws://192.168.164.70:1337');
 
   connection.onopen = function () {
      // connection is opened and ready to use

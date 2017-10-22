@@ -60,7 +60,7 @@ wsServer.on('request', request => {
         data = {
           plate: 'DX 8834',
           slot: '568',
-          status: 'License plate mismatches'
+          status: 'LICENSE PLATE MISMATCH'
         };
       }
 

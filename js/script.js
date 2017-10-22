@@ -27,7 +27,7 @@ $(document).ready(() => {
     console.log('Websocket is supported');
   }
 
-  const connection = new WebSocket('ws://192.168.164.84:1337');
+  const connection = new WebSocket('ws://192.168.164.70:1337');
 
   connection.onopen = function () {
      // connection is opened and ready to use
@@ -76,7 +76,7 @@ $(document).ready(() => {
             $unavailSlotParent.css('display', 'block');
             $unavailSlot.html(data && data.slot && 'NO.' + data.slot || '')
                 .css('display', 'block');
-          } else if (data.status.toLowerCase() === 'license plate mismatches') {
+          } else if (data.status.toLowerCase() === 'license plate mismatch') {
             $licensePlate.parent().css('display', 'block');
             $licensePlate.html(data && data.plate || '')
                         .addClass('add-border');
