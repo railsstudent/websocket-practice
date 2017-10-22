@@ -15,6 +15,7 @@ $(document).ready(() => {
   var $availHoursText = $availableInfo.find('.available-hour p');
 
   var $p = $('p');
+  var $container = $('.container');
 
   // if user is running mozilla then use it's built-in WebSocket
   window.WebSocket = window.WebSocket || window.MozWebSocket;
@@ -64,6 +65,8 @@ $(document).ready(() => {
             $unavailSlotParent.css('display', 'none');
             $availSlotParent.css('display', 'block');
             $availSlot.html(data && data.slot && 'NO.' + data.slot || '');
+
+            $container.removeClass('add-flex-column');
           } else if (data.status.toLowerCase() === 'unavailable') {
             $licensePlate.parent().css('display', 'block');
             $licensePlate.html(data && data.plate || '')
@@ -76,6 +79,7 @@ $(document).ready(() => {
             $unavailSlotParent.css('display', 'block');
             $unavailSlot.html(data && data.slot && 'NO.' + data.slot || '')
                 .css('display', 'block');
+            $container.removeClass('add-flex-column');
           } else if (data.status.toLowerCase() === 'license plate mismatch') {
             $licensePlate.parent().css('display', 'block');
             $licensePlate.html(data && data.plate || '')
@@ -88,6 +92,8 @@ $(document).ready(() => {
             $unavailSlotParent.css('display', 'block');
             $unavailSlot.html(data && data.slot && 'NO.' + data.slot || '')
                 .css('display', 'block');
+
+            $container.addClass('add-flex-column');
           }
           $statusText.html(data && data.status || '');
       }

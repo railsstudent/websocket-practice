@@ -55,6 +55,8 @@ body {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
+
+  text-align: center;
 }
 
 .available-info .status.available, .available-info .status.unavailable {
@@ -146,16 +148,22 @@ body {
   and (orientation: landscape)
   and (-webkit-min-device-pixel-ratio: 1) {
 
+    .add-flex-column {
+      flex-direction: column;  
+    }
+
     .available-info .available-hour p {
       font-size: 15vh;
     }
 
     .available-info .status.available p {
       font-size: 15vw;
+      text-align: center;
     }
 
     .available-info .status.unavailable p {
       font-size: 17vh;
+      text-align: center;
     }
 }
 
